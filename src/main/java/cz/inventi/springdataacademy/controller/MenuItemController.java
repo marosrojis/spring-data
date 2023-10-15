@@ -33,7 +33,7 @@ public class MenuItemController {
 
   @GetMapping("/menu/{id}/menu-items")
   List<MenuItemDTO> getAllByMenuId(@PathVariable Long id) {
-    return menuItemRepository.findAllByMenuId(id).stream().map(this::toMenuItemDTO).collect(Collectors.toList());
+    return menuItemRepository.findAllByMenuIdQuery(id).stream().map(this::toMenuItemDTO).collect(Collectors.toList());
   }
 
   @PostMapping("/menu-items")
