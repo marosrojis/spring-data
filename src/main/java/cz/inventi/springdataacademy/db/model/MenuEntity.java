@@ -3,10 +3,12 @@ package cz.inventi.springdataacademy.db.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -20,6 +22,9 @@ public class MenuEntity {
 
   @OneToMany(mappedBy = "menu")
   private List<MenuItemEntity> menuItems = new ArrayList<>();
+
+  @ManyToMany(mappedBy = "menu")
+  private Set<CustomerEntity> customers;
 
   public MenuEntity() {}
 
@@ -52,6 +57,22 @@ public class MenuEntity {
 
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
+  }
+
+  public List<MenuItemEntity> getMenuItems() {
+    return menuItems;
+  }
+
+  public void setMenuItems(List<MenuItemEntity> menuItems) {
+    this.menuItems = menuItems;
+  }
+
+  public Set<CustomerEntity> getCustomers() {
+    return customers;
+  }
+
+  public void setCustomers(Set<CustomerEntity> customers) {
+    this.customers = customers;
   }
 
   @Override
